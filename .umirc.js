@@ -7,19 +7,20 @@ export default {
       path: '/',
       component: '../layouts/index',
       routes: [
-        { path: '/', component: '../pages/index' }
+        { path: '/', component: '../pages/index' },
+        { path: '/detail', component: '../pages/detail' }
       ]
     }
   ],
   plugins: [
-    // ref: https://umijs.org/plugin/umi-plugin-react.html
+    // ref: https://umijs.org/plugin/umi-plugin-react.q
     ['umi-plugin-react', {
       antd: true,
       dva: true,
       dynamicImport: false,
-      title: 'React Template',
+      title: 'react-admin',
       dll: false,
-      
+
       routes: {
         exclude: [
           /models\//,

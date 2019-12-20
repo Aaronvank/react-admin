@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 .normal {
   font-family: Georgia, sans-serif;
   text-align: center;
@@ -13,22 +12,4 @@
   padding: .6em 0;
   color: white;
   margin: 0;
-=======
-.trigger {
-  font-size: 18px;
-  line-height: 64px;
-  padding: 0 24px;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.trigger:hover {
-  color: #1890ff;
-}
-
-.logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
->>>>>>> feat:上传基础配置文件；layout初步构建；增加请求相关文件
 }
