@@ -2,7 +2,7 @@
 
 const API = {
   /* 登录 */
-  LOGIN: '/login.do',
+  LOGIN: '/api/users',
   /* 登出 */
   LOGIN_OUT: '/loginout.do'
 };

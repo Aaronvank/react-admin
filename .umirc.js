@@ -1,6 +1,7 @@
 
 // ref: https://umijs.org/config/
 export default {
+  disableCSSModules: true,
   treeShaking: true,
   routes: [
     {
@@ -8,9 +9,10 @@ export default {
       component: '../layouts/index',
       routes: [
         { path: '/', component: '../pages/index' },
+        { path: '/login', component: '../pages/login' },
         { path: '/detail', component: '../pages/detail' }
       ]
-    }
+    },
   ],
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.q

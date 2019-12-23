@@ -1,53 +1,10 @@
 /* 公共层叠样式表 */
-/* =============== 字体颜色、背景色 ===========  */
-$fontDF3031 = #DF3031 // 偏红色
-$fontFFFFFF = #fff // 白色
-$font333333 = #333 // 黑色
-$fontFAFBFC = #FAFBFC // 背景色偏灰色
-$fontE5E5E5 = #E5E5E5 // 线条颜色
-$font999999 = #999 // 灰色999
-
-/* ===========页面最小高度满屏 ============== */
-minHeight()
-  background $fontFAFBFC
-  min-height 100vh
+html,body
+  margin 0
+  padding 0
+  font-family Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Arial,sans-serif
 
 
-/* ============字体样式============ */
-fontMixin(size = 32px, weight = 400, color = $font333333)
-  font-size size
-  font-family SourceHanSerifCN
-  font-weight weight
-  color color
-
-
-/* ============flex布局============ */
-flexLayout(type, justify-content, align-items)
-  display type
-  justify-content justify-content
-  align-items align-items
-
-
-/* ===========圆形radius或者矩形========== */
-circleRadius(width, height, radius)
-  width width
-  height height
-  border-radius radius
-
-/* ============定位布局============ */
-positionLayout(position, top, right, bottom, left, zIndex)
-  position position
-  top top
-  right right
-  bottom bottom
-  left left
-  z-index zIndex
-
-/* ============超出省略显示点点点=========== */
-ellipsis()
-  overflow hidden
-  white-space nowrap
-  text-overflow ellipsis
 
 
 

@@ -1,7 +1,7 @@
 /* 网络接口地址配置 */
 
 const CONFIG = {
-  dev: 'http://www.baidu.com',
+  dev: 'http://localhost:8000',
   tes: 'http://www.baidu.com',
   prd: 'http://www.baidu.com',
 };
