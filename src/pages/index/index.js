@@ -1,5 +1,5 @@
 import { connect } from 'dva'
-import styles from './index.css'
+import styles from './index.styl'
 
 function Index(props) {
   console.log('props', props);
