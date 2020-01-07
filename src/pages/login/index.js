@@ -1,46 +1,86 @@
-import { Form, Icon, Input, Button } from 'antd'
-import { useState } from 'react';
-import { login } from '@/services/actions'
-import './index.styl'
+import React, { PureComponent,Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'dva'
+import { Button, Row, Form, Input } from 'antd'
 
-export default function() {
-  const [userName, setUserName] = useState();
-  const [password, setPassword] = useState();
+import styles from './index.styl'
+const FormItem = Form.Item
 
-  async function handelSubmit() {
-    console.log('userName', userName);
-    console.log('password', password);
-    const res = await login();
-    console.log('res', res);
+@connect (({ loading }) => ({ loading }))
+@Form.create()
+class Login extends  PureComponent{
+  handleLogin = () => {
+    const { dispatch, form } = this.props
+    const { validateFieldsAndScroll } = form
+    validateFieldsAndScroll((errors, values) => {
+      if (errors) {
+        return
+      }
+      dispatch({ type: 'login/login', payload: values })
+    })
   }
 
-  return (
-    <div className='login'>
-      <div className='login-wrapper'>
-        <div className='title'>系统登录</div>
-        <Form>
-          <Form.Item>
-            <Input
-              prefix={<Icon type="user" />}
-              placeholder="Username"
-              onChange={(e) => setUserName(e.currentTarget.value) }
-            />
-          </Form.Item>
-          <Form.Item>
-            <Input
-              prefix={<Icon type="lock" />}
-              type="password"
-              placeholder="Password"
-              onChange={(e) => setPassword(e.currentTarget.value)}
-            />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" onClick={handelSubmit} className="login-form-button">
-              登 录
-            </Button>
-          </Form.Item>
-        </Form>
-      </div>
-    </div>
-  );
+  render() {
+    const { loading, form } = this.props
+    const { getFieldDecorator } = form
+    return (
+      <Fragment>
+        <div className='login'>
+          <div className='form'>
+            <div className='logo'>
+              <span>Goktech Admin</span>
+            </div>
+            <form>
+              <FormItem hasFeedback>
+                {getFieldDecorator('username', {
+                  rules: [
+                    {
+                      required: true,
+                    },
+                  ],
+                })(
+                  <Input
+                    onPressEnter={this.handleLogin}
+                    placeholder='请输入用户名'
+                  />
+                )}
+              </FormItem>
+              <FormItem hasFeedback>
+                {getFieldDecorator('password', {
+                  rules: [
+                    {
+                      required: true,
+                    },
+                  ],
+                })(
+                  <Input
+                    type="password"
+                    onPressEnter={this.handleLogin}
+                    placeholder='请输入密码'
+                  />
+                )}
+              </FormItem>
+              <Row>
+                <Button
+                  type="primary"
+                  onClick={this.handleLogin}
+                  loading={loading.effects.login}
+                >
+                  登录
+                </Button>
+              </Row>
+            </form>
+          </div>
+        </div>
+      </Fragment>
+    )
+  }
 }
+
+Login.propTypes = {
+  form: PropTypes.object,
+  dispath: PropTypes.func,
+  loading: PropTypes.object
+}
+
+export default Login

@@ -1,19 +1,46 @@
-import styles from './index.styl';
+import React, { PureComponent, Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'dva'
+import NProgress from 'nprogress'
+import withRouter from 'umi/withRouter'
 
-function BasicLayout(props) {
-  const { pathname } = props.location;
-  if (pathname === '/login') {
-    return (
-      <div>
-        {props.children}
-      </div> )
+import PublicLayout from './PublicLayout'
+import PrimaryLayout from './PrimaryLayout'
+
+
+@withRouter
+@connect(({ loading }) => ({ loading }))
+class BaseLayout extends PureComponent{
+  previousPath = ''
+
+  componentDidMount() {
+    console.log('props', this.props)
   }
-  return (
-    <div>
-      <h1 className={styles.title}>Yay! Welcome to umi!</h1>
-      {props.children}
-    </div>
-  );
+
+  render() {
+    const { loading, children, location } = this.props
+    const Container = location.pathname === '/login' ? PublicLayout : PrimaryLayout
+
+    const currentPath = location.pathname + location.search
+    if (currentPath !== this.previousPath) {
+      NProgress.start()
+    }
+
+    if(!loading.global){
+      NProgress.done()
+      this.previousPath = currentPath
+    }
+
+    return (
+      <Fragment>
+        <Container>{ children }</Container>
+      </Fragment>
+    )
+  }
 }
 
-export default BasicLayout;
+BaseLayout.propTypes = {
+  loading: PropTypes.object
+}
+
+export default BaseLayout

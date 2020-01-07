@@ -2,7 +2,7 @@ export default {
   // 支持值为 Object 和 Array
   'GET /api/users': (req, res) => {
     setTimeout(() => {
-      res.send( {user: [1, 2]});
+      res.status(200).json( {user: [1, 2]});
     }, 1000);
   },
 

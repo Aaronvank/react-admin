@@ -1,24 +1,70 @@
-@import "./../../common/styl/com.styl"
-.login
-  minHeight()
-  .login-wrapper
-    position relative
-    width 520px
-    max-width 100%
-    padding 160px 35px 0
-    margin 0 auto
-    overflow hidden
-    .title
-      font-size 26px
-      color $fontEEE
-      margin 0 auto 40px auto
-      text-align center
-      font-weight 700
-    .login-form-button
-      margin 0 auto
-    .ant-input-prefix
-      color $fontEEE
-    .ant-input
-      background transparent
-      color $fontEEE
+// 背景图设置
+.login {
+  height: 100%;
+  background-image: url(https://gw.alipayobjects.com/zos/rmsportal/TVYTbAXWheQpRcWDaDMu.svg);
+    background-repeat: no-repeat;
+    background-position: center 110px;
+    background-size: 100%;
+}
+.form {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin: -160px 0 0 -160px;
+  width: 320px;
+  height: 320px;
+  padding: 36px;
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.08);
+
+  button {
+    width: 100%;
+  }
+
+  p {
+    color: rgb(204, 204, 204);
+    text-align: center;
+    margin-top: 16px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.logo {
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 40px;
+    margin-right: 8px;
+  }
+
+  span {
+    vertical-align: text-bottom;
+    font-size: 16px;
+    text-transform: uppercase;
+    display: inline-block;
+    font-weight: 700;
+    color: blue;
+    background-image: -webkit-gradient(
+      linear,
+      37.219838% 34.532506%,
+      36.425669% 93.178216%,
+      from(#29cdff),
+      to(#0a60ff),
+      color-stop(0.37, #148eff)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.ant-spin-container,
+.ant-spin-nested-loading {
+  height: 100%;
+}
 
