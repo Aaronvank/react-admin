@@ -6,6 +6,7 @@ import withRouter from 'umi/withRouter'
 
 import PublicLayout from './PublicLayout'
 import PrimaryLayout from './PrimaryLayout'
+import './index.less'
 
 
 @withRouter

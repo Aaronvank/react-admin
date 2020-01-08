@@ -1,8 +1,10 @@
 import React, { PureComponent, Fragment } from 'react'
-import { Layout, Menu, Icon } from 'antd';
+import { Layout } from 'antd';
+import { MyLayout } from 'components'
 import { connect } from 'dva';
 
-const { Header, Sider, Content } = Layout;
+const { Content } = Layout
+const { Header, Sider, Bread } = MyLayout
 
 @connect(({ app }) => ({ app }))
 class PrimaryLayout extends PureComponent{
@@ -21,6 +23,10 @@ class PrimaryLayout extends PureComponent{
     const { children,app } = this.props
     const { collapsed } = app
     const { onCollpaseChange } = this
+    const headerProps = {
+      collapsed,
+      onCollpaseChange
+    }
 
     return(
       <Fragment>
@@ -29,32 +35,10 @@ class PrimaryLayout extends PureComponent{
           height: '100%',
         }
       } >
-        <Sider trigger={null} collapsed={ collapsed } >
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1">
-              <Icon type="user" />
-              <span>nav 1</span>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Icon type="video-camera" />
-              <span>nav 2</span>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Icon type="upload" />
-              <span>nav 3</span>
-            </Menu.Item>
-          </Menu>
-        </Sider>
+        <Sider collapsed={ collapsed } />
         <Layout>
-          <Header style={{ background: '#fff', padding: 0 }}>
-            <Icon
-              className="trigger"
-              type={collapsed ? 'menu-unfold' : 'menu-fold'}
-              onClick={ onCollpaseChange.bind(this, !collapsed) }
-              style = {{marginLeft: '20px'}}
-            />
-          </Header>
+          < Header {...headerProps} / >
+          < Bread / >
           <Content
             style={{
               margin: '24px 16px',
@@ -62,7 +46,7 @@ class PrimaryLayout extends PureComponent{
               background: '#fff',
               minHeight: 280,
             }}
-          >
+          > 
            { children }
           </Content>
         </Layout>
